@@ -49,11 +49,12 @@ router.post('/neworder',async(req,res)=>{
     res.json(await createOrder(req,res));
 })
 
-// router.get('/getorder/:mb_sid',async(req,res)=>{
-//     const { mb_sid } = req.params;
-//     const getod_sql = `SELECT * FROM orders WHERE mb_sid = ${mb_sid}`;
-//     const [getorder_rows] = await db.query(getod_sql);
-//     res.json({getorder_rows});
-// })
+router.get('/getorder/:mb_sid',async(req,res)=>{
+    const { mb_sid } = req.params;
+    const getod_sql = `SELECT * FROM orders WHERE mb_sid = ${mb_sid} ORDER BY sid DESC`;
+    const [getorder_rows] = await db.query(getod_sql);
+    
+    res.json({getorder_rows});
+})
 
 module.exports = router;
