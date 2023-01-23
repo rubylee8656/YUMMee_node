@@ -24,6 +24,9 @@ app.use('/home',require(__dirname + "/routes/home"));
 //product
 app.use('/product',require(__dirname + "/routes/product"));
 
+//cart
+app.use('/cart',require(__dirname + "/routes/cart"));
+
 //member
 app.use('/member',require(__dirname + "/routes/member"))
 
