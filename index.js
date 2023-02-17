@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 
 // top-level middleware
+//白名單
 const corsOptions = {
     credentials: true,
     origin: function (origin, callback) {
@@ -31,9 +32,15 @@ app.use('/cart',require(__dirname + "/routes/cart"));
 app.use('/member',require(__dirname + "/routes/member"))
 
 
-// 環境設定
+// 靜態資料夾
 app.use(express.static("public"));
 
+//404 page
+app.use((req,res)=>{
+  res.status(404).send('Error!! Page Not Found');
+});
+
+// 環境設定
 const port = process.env.SERVER_PORT || 3003;
 
 app.listen(port,()=>{
